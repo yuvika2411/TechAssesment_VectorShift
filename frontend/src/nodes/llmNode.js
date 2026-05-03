@@ -1,34 +1,20 @@
-// llmNode.js
+import BaseNode from './BaseNode';
 
-import { Handle, Position } from 'reactflow';
-
-export const LLMNode = ({ id, data }) => {
-
+export const LLMNode = ({ id, selected }) => {
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-system`}
-        style={{top: `${100/3}%`}}
-      />
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-prompt`}
-        style={{top: `${200/3}%`}}
-      />
-      <div>
-        <span>LLM</span>
+    <BaseNode 
+      id={id} 
+      title="LLM Node" 
+      nodeType="processing"
+      selected={selected} 
+      inputs={[`${id}-system`, `${id}-prompt`]}
+      outputs={[`${id}-response`]}
+      color="from-blue-500 to-cyan-400"
+      handleColor="#3b82f6"
+    >
+      <div className="flex flex-col">
+        <span className="text-[13px] text-purple-200/70">Connect systems and prompts to utilize a Large Language Model.</span>
       </div>
-      <div>
-        <span>This is a LLM.</span>
-      </div>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={`${id}-response`}
-      />
-    </div>
+    </BaseNode>
   );
 }

@@ -1,47 +1,41 @@
-// inputNode.js
-
 import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
+import BaseNode from './BaseNode';
 
-export const InputNode = ({ id, data }) => {
+export const InputNode = ({ id, data, selected }) => {
   const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
   const [inputType, setInputType] = useState(data.inputType || 'Text');
 
-  const handleNameChange = (e) => {
-    setCurrName(e.target.value);
-  };
-
-  const handleTypeChange = (e) => {
-    setInputType(e.target.value);
-  };
-
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <div>
-        <span>Input</span>
-      </div>
-      <div>
-        <label>
-          Name:
+    <BaseNode 
+      id={id} 
+      title="Input Node" 
+      selected={selected} 
+      outputs={[`${id}-value`]}
+      color="from-green-500 to-emerald-400"
+      handleColor="#4ade80"
+    >
+      <div className="flex flex-col gap-4">
+        <label className="flex flex-col text-[11px] text-gray-400 font-semibold uppercase tracking-widest">
+          Name
           <input 
             type="text" 
             value={currName} 
-            onChange={handleNameChange} 
+            onChange={(e) => setCurrName(e.target.value)} 
+            className="w-full mt-2 p-2.5 bg-[#110c24] border border-[#2c145e] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#4ade80] text-gray-200 shadow-inner text-[13px] transition-all"
           />
         </label>
-        <label>
-          Type:
-          <select value={inputType} onChange={handleTypeChange}>
+        <label className="flex flex-col text-[11px] text-gray-400 font-semibold uppercase tracking-widest">
+          Type
+          <select 
+            value={inputType} 
+            onChange={(e) => setInputType(e.target.value)}
+            className="w-full mt-2 p-2.5 bg-[#110c24] border border-[#2c145e] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#4ade80] text-gray-200 shadow-inner text-[13px] transition-all"
+          >
             <option value="Text">Text</option>
             <option value="File">File</option>
           </select>
         </label>
       </div>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={`${id}-value`}
-      />
-    </div>
+    </BaseNode>
   );
 }

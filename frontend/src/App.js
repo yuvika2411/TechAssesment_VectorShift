@@ -1,13 +1,20 @@
+import { ReactFlowProvider } from 'reactflow';
 import { PipelineToolbar } from './toolbar';
 import { PipelineUI } from './ui';
-import { SubmitButton } from './submit';
+import { Sidebar } from './sidebar';
 
 function App() {
   return (
-    <div>
+    <div className="flex flex-col h-screen bg-[#0a0814] overflow-hidden text-gray-200 font-sans">
       <PipelineToolbar />
-      <PipelineUI />
-      <SubmitButton />
+      <div className="flex flex-1 relative overflow-hidden">
+        <Sidebar />
+        <div className="flex-1 relative">
+          <ReactFlowProvider>
+            <PipelineUI />
+          </ReactFlowProvider>
+        </div>
+      </div>
     </div>
   );
 }
