@@ -17,7 +17,7 @@ export const SubmitButton = () => {
             const data = await res.json();
 
             alert(
-                `Pipeline Analysis\n\n🔹 Nodes: ${data.num_nodes}\n🔹 Edges: ${data.num_edges}\n🔹 Is DAG: ${data.is_dag ? " Yes" : " No"}`
+                `Pipeline Analysis\n\nNodes: ${data.num_nodes}\nEdges: ${data.num_edges}\nIs DAG: ${data.is_dag ? " Yes" : " No"}`
             );
         } catch (err) {
             console.error(err);

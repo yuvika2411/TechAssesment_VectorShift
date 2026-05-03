@@ -7,31 +7,25 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # allow all for now
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Root check
 @app.get("/")
 def read_root():
     return {"Ping": "Pong"}
 
-
-# Request body structure
 class Pipeline(BaseModel):
     nodes: list
     edges: list
 
-
-# Main endpoint
 @app.post("/pipelines/parse")
 def parse_pipeline(pipeline: Pipeline):
     num_nodes = len(pipeline.nodes)
     num_edges = len(pipeline.edges)
 
-    # Build graph
     graph = defaultdict(list)
     indegree = defaultdict(int)
 
@@ -40,8 +34,7 @@ def parse_pipeline(pipeline: Pipeline):
         tgt = edge["target"]
         graph[src].append(tgt)
         indegree[tgt] += 1
-
-    # Kahn's Algorithm for DAG check
+    
     queue = [n["id"] for n in pipeline.nodes if indegree[n["id"]] == 0]
     visited = 0
 

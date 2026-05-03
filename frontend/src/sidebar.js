@@ -3,16 +3,13 @@ import { useStore } from './store';
 import { DraggableNode } from './draggableNode';
 
 export const Sidebar = () => {
-    // We can pull node/edge count for stats from the Zustand store
     const nodes = useStore((state) => state.nodes);
     const edges = useStore((state) => state.edges);
 
     return (
         <div className="w-[300px] bg-[#0a0814] border-r border-[#2c145e]/60 flex flex-col z-10 shadow-2xl h-full relative overflow-hidden">
-            {/* Sidebar Background Gradient */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#1a1438_0%,_transparent_70%)] pointer-events-none z-0"></div>
-            
-            {/* Node Library */}
+      
             <div className="relative p-4 flex-1 z-10 overflow-hidden flex flex-col">
                 <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-3 flex items-center justify-between pb-2 border-b border-[#2c145e]/50">
                     <span>Library</span>
@@ -49,7 +46,6 @@ export const Sidebar = () => {
                 </div>
             </div>
 
-            {/* Restored Pipeline Stats (No Status Row) */}
             <div className="relative p-5 border-t border-[#2c145e]/50 bg-[#0a0814]/80 backdrop-blur-md z-10">
                 <h2 className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-3">Pipeline Stats</h2>
                 <div className="flex flex-col gap-2.5 text-[12px] text-[#c4b5fd]">

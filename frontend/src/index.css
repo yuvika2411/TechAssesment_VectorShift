@@ -16,7 +16,6 @@ code {
     monospace;
 }
 
-/* Custom React Flow Controls Styling */
 .react-flow__controls {
     display: flex !important;
     flex-direction: column !important;

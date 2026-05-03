@@ -71,7 +71,6 @@ const CustomControls = () => {
 
   return (
     <>
-      {/* Top Horizontal Bar */}
       <Panel position="bottom-right" style={{ marginBottom: '175px', marginRight: '15px' }} className="pointer-events-auto flex items-center bg-[#1a1438] border border-[#2c145e] rounded-lg p-1 shadow-[0_0_15px_rgba(0,0,0,0.5)] gap-0.5 z-50">
         <button onClick={toggleLock} className={`p-1.5 rounded transition-colors ${isLocked ? 'text-white bg-[#3b1c82]' : 'text-[#c4b5fd] hover:text-white hover:bg-[#2c145e]'}`} title={isLocked ? "Screen Locked" : "Screen Unlocked"}>
           {isLocked ? (
@@ -91,7 +90,6 @@ const CustomControls = () => {
         </button>
       </Panel>
 
-      {/* Left Vertical Bar */}
       <Panel position="bottom-right" style={{ marginBottom: '15px', marginRight: '230px' }} className="pointer-events-auto flex flex-col items-center gap-2 z-50">
         <span className="text-[#c4b5fd] font-bold text-[11px] tracking-wide bg-[#110c24] px-1.5 py-0.5 rounded shadow-[0_0_10px_rgba(0,0,0,0.5)]">{zoomPercentage}%</span>
         <div className="flex flex-col bg-[#1a1438] border border-[#2c145e] rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.5)] overflow-hidden w-[32px]">
@@ -179,7 +177,6 @@ export const PipelineUI = () => {
   return (
     <>
       <div ref={reactFlowWrapper} className="absolute inset-0 bg-[#0a0814] overflow-hidden">
-        {/* Main Canvas Epic Radial Gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1a1438_0%,_#0a0814_100%)] pointer-events-none z-0"></div>
         <ReactFlow
           nodes={nodes}
